@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joe Wallace — Computational Scientist</title>
+  <meta name="description" content="Computational Scientist building data-driven pipelines for molecular and materials design." />
+
+  <!-- Prism.js (light theme) -->
+  <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css" />
+  <script defer src="https://unpkg.com/prismjs/components/prism-core.min.js"></script>
+  <script defer src="https://unpkg.com/prismjs/components/prism-clike.min.js"></script>
+  <script defer src="https://unpkg.com/prismjs/components/prism-python.min.js"></script>
+  <script defer src="https://unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script defer src="https://unpkg.com/prismjs/components/prism-json.min.js"></script>
+  <script defer src="https://unpkg.com/prismjs/components/prism-markup.min.js"></script>
+
+  <style>
+    :root{
+      /* ===== Theme knobs ===== */
+      --bg: #ffffff;
+      --text: #0f172a;      /* slate-900 */
+      --muted: #475569;     /* slate-600 */
+      --stroke: #e5e7eb;    /* border */
+      --card: #ffffff;
+      --panel: #f8fafc;     /* left profile panel */
+      --brand: #0ea5e9;     /* sky-500 */
+      --brand-2: #6366f1;   /* indigo-500 */
+      --accent: #10b981;    /* emerald-500 */
+      --shadow: 0 10px 24px rgba(2,6,23,.07);
+      --radius: 16px;
+      --sidew: 280px;       /* <<< Sidebar width */
+      --maxw: 1100px;       /* content max width */
+      --topbar-h: 64px;     /* top bar height */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+    img{max-width:100%;display:block}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .muted{color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1rem;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:600;border:none;cursor:pointer;box-shadow:var(--shadow)}
+    .btn.secondary{background:#fff;color:#0f172a;border:1px solid var(--stroke);box-shadow:none}
+    .tag{display:inline-block;padding:.22rem .55rem;border:1px solid var(--stroke);border-radius:999px;background:#f1f5f9;color:#334155;font-size:.82rem;margin:.12rem .25rem 0 0}
+    .pill{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .7rem;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:.85rem}
+    .divider{height:1px;background:var(--stroke);margin:22px 0}
+    section{padding:28px 0;scroll-margin-top:calc(var(--topbar-h) + 20px)}
+    h1,h2,h3{margin:0 0 10px}
+
+    /* ===== Top nav bar ===== */
+    .topbar{
+      position:sticky;top:0;z-index:1000;height:var(--topbar-h);
+      background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(8px);
+      border-bottom:1px solid var(--stroke)
+    }
+    .topbar .inner{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;max-width:calc(var(--maxw) + var(--sidew) + 60px);margin:0 auto;padding:0 16px}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent))}
+    .topnav a{color:#0f172a;padding:.4rem .6rem;border-radius:10px;border:1px solid transparent}
+    .topnav a:hover{background:#fff;border-color:var(--stroke);text-decoration:none}
+    .menu{display:flex;gap:10px;align-items:center}
+
+    /* ===== 2-column body (fixed-size left panel) ===== */
+    .wrap{display:grid;grid-template-columns:var(--sidew) 1fr;gap:20px;max-width:calc(var(--maxw) + var(--sidew));margin:0 auto;padding:18px 16px}
+    aside{
+      background:var(--panel);border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow);
+      height: calc(100vh - var(--topbar-h) - 36px);
+      position:sticky;top:calc(var(--topbar-h) + 18px);
+      overflow:hidden;   /* <<< fixed-size, no scroll */
+      padding:18px
+    }
+    .avatar{width:128px;height:128px;border-radius:50%;overflow:hidden;border:6px solid #fff;box-shadow:var(--shadow);background:#fff;margin-bottom:10px}
+    .side-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:8px}
+    .side-links{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+    .side-links a{padding:.48rem .6rem;border-radius:10px;border:1px solid transparent;color:#0f172a}
+    .side-links a:hover{background:#fff;border-color:var(--stroke);text-decoration:none}
+
+    main{min-width:0}
+    .container{max-width:var(--maxw);padding:0 6px;margin:0 auto}
+    .lead{color:var(--muted);margin:0 0 18px}
+
+    .grid{display:grid;gap:18px}
+    .grid.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width: 1000px){.grid.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width: 680px){.wrap{grid-template-columns:1fr}.grid.cards{grid-template-columns:1fr}aside{display:none}}
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow)}
+    .card .inner{padding:18px}
+
+    .project{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+    @media (max-width: 900px){.project{grid-template-columns:1fr}}
+    .box{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .chiprow{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+
+    /* Blog */
+    .post-card h3{margin:6px 0}
+    .post-meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:.9rem}
+    .tag-filter{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:14px}
+    .empty{color:var(--muted);padding:12px}
+
+    /* Code blocks + copy button */
+    pre[class*="language-"]{position:relative;border-radius:12px;border:1px solid var(--stroke);background:#fbfbfb;box-shadow:var(--shadow)}
+    .copy-btn{position:absolute;top:8px;right:8px;background:#fff;border:1px solid var(--stroke);color:#0f172a;padding:.35rem .6rem;border-radius:8px;font-size:.8rem;cursor:pointer}
+    .copy-btn:active{transform:translateY(1px)}
+
+    footer{padding:24px 0;color:var(--muted);border-top:1px solid var(--stroke);margin-top:30px}
+  </style>
+</head>
+<body>
+
+  <!-- ===== Top navigation ===== -->
+  <header class="topbar">
+    <div class="inner">
+      <div class="brand"><span class="dot"></span><span>Joe Wallace</span></div>
+      <nav class="topnav menu" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#publications">Publications</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Body grid ===== -->
+  <div class="wrap">
+
+    <!-- Left profile panel (fixed size) -->
+    <aside aria-label="Profile">
+      <div class="avatar">
+        <!-- put your circular PNG/JPG here -->
+        <img src="assets/img/joe-avatar.png" alt="Portrait of Joe Wallace" />
+      </div>
+      <p><strong>Computational Scientist</strong><br><span class="muted">I build data-driven pipelines for molecular & materials design. Python, RDKit, docking/MD, GNNs.</span></p>
+      <div class="side-chips">
+        <span class="tag">Python</span><span class="tag">RDKit</span><span class="tag">PyTorch</span>
+        <span class="tag">Docking</span><span class="tag">MD</span><span class="tag">Dash</span>
+      </div>
+      <nav class="side-links" aria-label="Secondary">
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main id="home">
+      <div class="container" style="padding-top:6px">
+        <h1>Computational pipelines for molecular and materials design</h1>
+        <p class="lead">Molecular modelling • Cheminformatics • Machine learning. I design end-to-end, reproducible workflows that turn data into decisions.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 0">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#cv">Download CV</a>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="container">
+          <h2>Projects</h2>
+          <p class="lead">Three evergreen projects. Methods-first, domain-agnostic. Each links to code and build notes.</p>
+
+          <div class="grid cards">
+            <article class="card">
+              <div class="inner">
+                <h3>Protein–Ligand Binding Prediction Pipeline</h3>
+                <p class="muted">Structure prep → docking → features (RDKit + interactions) → ML (RF/XGB + GNN) → evaluation & visuals.</p>
+                <div class="chiprow">
+                  <span class="tag">Docking</span><span class="tag">RDKit</span><span class="tag">GNN</span><span class="tag">CADD</span>
+                </div>
+                <div class="divider"></div>
+                <a class="btn secondary" href="projects/p1-binding-pipeline.html">Details</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="inner">
+                <h3>Molecular Interaction Screening Dashboard</h3>
+                <p class="muted">Interactive Dash/Plotly app for screening datasets (protein–ligand or NP–molecule). Filters, rankings, structure previews.</p>
+                <div class="chiprow">
+                  <span class="tag">Dash</span><span class="tag">Plotly</span><span class="tag">Cheminformatics</span><span class="tag">Viz</span>
+                </div>
+                <div class="divider"></div>
+                <a class="btn secondary" href="projects/p2-screening-dashboard.html">Details</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="inner">
+                <h3>Few-Shot Molecular Property Prediction (JEPA/GNN)</h3>
+                <p class="muted">JEPA-style latent embeddings with GNNs for low-data property prediction. Baselines vs advanced, with latent diagnostics.</p>
+                <div class="chiprow">
+                  <span class="tag">GNN</span><span class="tag">JEPA</span><span class="tag">Few-shot</span><span class="tag">ML</span>
+                </div>
+                <div class="divider"></div>
+                <a class="btn secondary" href="projects/p3-few-shot.html">Details</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project details (inline “overview” sections optional) -->
+      <section id="project-overview">
+        <div class="container">
+          <div class="project">
+            <div class="box">
+              <h3>End-to-end CADD workflow</h3>
+              <p>Reproducible pipeline from PDB/BindingDB → prep → docking (e.g., Vina) → RDKit descriptors & pocket features → ML (RF/XGB + GNN). Benchmarked with CV & external holdout; ROC/PR & pose overlays.</p>
+            </div>
+            <div class="box">
+              <h3>Snippet (feature gen)</h3>
+              <pre class="language-python"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code class="language-python">from rdkit import Chem, Descriptors, DataStructs
+from rdkit.Chem import AllChem
+import numpy as np
+
+def featurise_smiles(smiles: str) -&gt; np.ndarray:
+    m = Chem.MolFromSmiles(smiles)
+    if m is None: raise ValueError("Invalid SMILES")
+    desc = np.array([Descriptors.MolWt(m), Descriptors.MolLogP(m), Descriptors.TPSA(m)], float)
+    fp   = AllChem.GetMorganFingerprintAsBitVect(m, 2, nBits=1024)
+    arr  = np.zeros((1024,), dtype=int); DataStructs.ConvertToNumpyArray(fp, arr)
+    return np.concatenate([desc, arr.astype(float)])</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog -->
+      <section id="blog">
+        <div class="container">
+          <h2>Blog</h2>
+          <p class="lead">Short, practical notes. Filter by tags.</p>
+          <div class="tag-filter">
+            <button class="btn secondary" data-tag="all">All</button>
+            <button class="btn secondary" data-tag="CADD">CADD</button>
+            <button class="btn secondary" data-tag="Cheminformatics">Cheminformatics</button>
+            <button class="btn secondary" data-tag="Formulation">Formulation</button>
+            <button class="btn secondary" data-tag="GNN">GNN</button>
+            <button class="btn secondary" data-tag="Docking">Docking</button>
+            <button class="btn secondary" data-tag="Viz">Viz</button>
+            <button class="btn secondary" data-tag="Signal">Signal</button>
+          </div>
+
+          <div id="posts" class="grid cards">
+            <!-- Your first real post -->
+            <article class="card post-card" data-tags="Signal Viz">
+              <div class="inner">
+                <h3>Lines, Curves & Equilibrium: smoothing noisy BTC data</h3>
+                <div class="post-meta"><span>8 min</span><span class="tag">Signal</span><span class="tag">Viz</span></div>
+                <p class="muted">From rolling means and Savitzky–Golay to an equilibrium check inspired by PyMBAR. What smoothing reveals—and hides.</p>
+                <a class="btn secondary" href="blog/lines-curves-and-equilibrium.html">Read</a>
+              </div>
+            </article>
+
+            <!-- keep a couple placeholders, or delete -->
+            <article class="card post-card" data-tags="CADD Docking">
+              <div class="inner">
+                <h3>Automating Vina runs with clean Python wrappers</h3>
+                <div class="post-meta"><span>6 min</span><span class="tag">Docking</span><span class="tag">CADD</span></div>
+                <p class="muted">Grid configs, batch ligands, robust error handling.</p>
+                <a class="btn secondary" href="#">Read</a>
+              </div>
+            </article>
+          </div>
+          <div id="emptyMsg" class="empty" style="display:none">No posts for that tag yet.</div>
+        </div>
+      </section>
+
+      <!-- Publications -->
+      <section id="publications">
+        <div class="container">
+          <h2>Publications</h2>
+          <ul>
+            <li>Author, A.; <strong>Wallace, J.</strong> Title. <em>Journal</em>, Year. <a href="#" >DOI</a></li>
+            <li><strong>Wallace, J.</strong>; Author, B. Title. <em>Journal</em>, Year. <a href="#" >DOI</a></li>
+          </ul>
+          <p class="muted">Preprints, talks, and posters here when ready.</p>
+        </div>
+      </section>
+
+      <!-- CV -->
+      <section id="cv">
+        <div class="container">
+          <h2>CV</h2>
+          <p class="lead">Concise CV for roles in CADD, cheminformatics, formulation, and materials data science.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="assets/files/CV_Joe_Wallace.pdf" target="_blank" rel="noreferrer">Download PDF</a>
+            <a class="btn secondary" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="container">
+          <h2>Contact</h2>
+          <p class="lead">Open to roles applying computational modelling and data science to molecular, chemical, or materials challenges.</p>
+          <div class="box">
+            <form onsubmit="event.preventDefault(); window.location.href='mailto:you@example.com?subject=Portfolio%20contact';">
+              <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+                <input required name="name" placeholder="Your name" style="padding:.8rem;border-radius:10px;border:1px solid var(--stroke)">
+                <input required name="email" placeholder="Email" style="padding:.8rem;border-radius:10px;border:1px solid var(--stroke)">
+              </div>
+              <textarea required name="msg" placeholder="Message" rows="5" style="width:100%;margin-top:10px;padding:.8rem;border-radius:10px;border:1px solid var(--stroke)"></textarea>
+              <div style="margin-top:10px"><button class="btn" type="submit">Send</button></div>
+            </form>
+            <p class="muted" style="margin-top:10px">Prefer email? <a href="mailto:you@example.com">you@example.com</a></p>
+          </div>
+          <footer>
+            <div class="container">
+              <div>&copy; <span id="y"></span> Joe Wallace — Computational Scientist</div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Blog tag filter
+    const btns = document.querySelectorAll('.tag-filter .btn');
+    const posts = document.querySelectorAll('#posts .post-card');
+    const emptyMsg = document.getElementById('emptyMsg');
+    btns.forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const tag = b.dataset.tag;
+        let any = 0;
+        posts.forEach(p=>{
+          const tags = (p.getAttribute('data-tags')||'').split(/\s+/);
+          const show = (tag==='all') || tags.includes(tag);
+          p.style.display = show ? '' : 'none';
+          if(show) any++;
+        });
+        emptyMsg.style.display = any ? 'none' : '';
+      });
+    });
+
+    // Copy button for code blocks
+    window.copyCode = function(btn){
+      const code = btn.nextElementSibling;
+      const text = code.textContent;
+      navigator.clipboard.writeText(text).then(()=>{
+        const old = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(()=>btn.textContent = old, 1100);
+      });
+    }
+  </script>
+</body>
+</html>
