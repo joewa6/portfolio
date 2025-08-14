@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your 1,000 Price Bars Are Actually 12: Statistical Inefficiency in Crypto</title>
+<link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css" />
+<script defer src="https://unpkg.com/prismjs/components/prism-core.min.js"></script>
+<script defer src="https://unpkg.com/prismjs/components/prism-python.min.js"></script>
+<style>
+  body { font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,sans-serif; margin:0; color:#0f172a; background:#fff; }
+  .top { position:sticky; top:0; background:#fff; border-bottom:1px solid #e5e7eb; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  a { color:#0ea5e9; text-decoration:none; } a:hover { text-decoration:underline; }
+  .container { max-width:760px; margin:0 auto; padding:20px 16px; }
+  .lead { color:#475569; }
+  pre { border:1px solid #e5e7eb; border-radius:12px; background:#fbfbfb; }
+</style>
+</head>
+<body>
+  <header class="top">
+    <div><a href="../projects/time-series-toolkit.html">← Back to Project</a></div>
+    <nav><a href="../index.html#projects">Projects</a> · <a href="../index.html#cv">CV</a></nav>
+  </header>
+  <main class="container">
+    <h1>Your 1,000 Price Bars Are Actually 12: Statistical Inefficiency in Crypto</h1>
+    <p class="lead">Adapting statistical inefficiency analysis from molecular dynamics to quantify correlation and effective sample size in BTC price data.</p>
+
+    <h3>Autocorrelation of Returns</h3>
+    <img src="../assets/img/blog/series-2-inefficiency/p2_acf_returns.png" alt="Autocorrelation of returns">
+
+    <h3>Sliding τ<sub>int</sub></h3>
+    <img src="../assets/img/blog/series-2-inefficiency/p2_tau_int_sliding.png" alt="Sliding integrated autocorrelation time">
+
+    <h3>Effective Sample Size</h3>
+    <img src="../assets/img/blog/series-2-inefficiency/p2_neff_sliding.png" alt="Effective sample size">
+
+    <p>Notebook & code: <a href="https://github.com/joewa6/portfolio/blob/main/notebooks/time_series_toolkit.py" target="_blank">GitHub</a></p>
+  </main>
+</body>
+</html>

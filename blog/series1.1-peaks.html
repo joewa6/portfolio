@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Surfing the Spikes: Signal Processing for Crypto Peaks & Troughs</title>
+<link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css" />
+<script defer src="https://unpkg.com/prismjs/components/prism-core.min.js"></script>
+<script defer src="https://unpkg.com/prismjs/components/prism-python.min.js"></script>
+<style>
+  body { font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,sans-serif; margin:0; color:#0f172a; background:#fff; }
+  .top { position:sticky; top:0; background:#fff; border-bottom:1px solid #e5e7eb; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  a { color:#0ea5e9; text-decoration:none; } a:hover { text-decoration:underline; }
+  .container { max-width:760px; margin:0 auto; padding:20px 16px; }
+  .lead { color:#475569; }
+  pre { border:1px solid #e5e7eb; border-radius:12px; background:#fbfbfb; }
+</style>
+</head>
+<body>
+  <header class="top">
+    <div><a href="../projects/time-series-toolkit.html">← Back to Project</a></div>
+    <nav><a href="../index.html#projects">Projects</a> · <a href="../index.html#cv">CV</a></nav>
+  </header>
+  <main class="container">
+    <h1>Surfing the Spikes: Signal Processing for Crypto Peaks & Troughs</h1>
+    <p class="lead">Applying Savitzky–Golay filtering and curvature analysis to detect meaningful turning points in noisy BTC price data.</p>
+
+    <h3>Raw vs Smoothed</h3>
+    <img src="../assets/img/blog/series-1-peaks/p1_raw_vs_smoothed.png" alt="Raw vs Smoothed" loading="lazy">
+
+    <h3>Slope</h3>
+    <img src="../assets/img/blog/series-1-peaks/p1_slope.png" alt="Slope">
+
+    <h3>Curvature</h3>
+    <img src="../assets/img/blog/series-1-peaks/p1_curvature.png" alt="Curvature">
+
+    <h3>Detected Peaks & Troughs</h3>
+    <img src="../assets/img/blog/series-1-peaks/p1_peaks_troughs.png" alt="Peaks & Troughs">
+
+    <p>Notebook & code: <a href="https://github.com/joewa6/portfolio/blob/main/notebooks/time_series_toolkit.py" target="_blank">GitHub</a></p>
+  </main>
+</body>
+</html>
