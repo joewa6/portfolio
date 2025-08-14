@@ -4,16 +4,60 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>On the Knife Edge: Committor Functions for Market Transitions</title>
+
 <link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css" />
 <script defer src="https://unpkg.com/prismjs/components/prism-core.min.js"></script>
 <script defer src="https://unpkg.com/prismjs/components/prism-python.min.js"></script>
+
 <style>
-  body { font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,sans-serif; margin:0; color:#0f172a; background:#fff; }
-  .top { position:sticky; top:0; background:#fff; border-bottom:1px solid #e5e7eb; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
-  a { color:#0ea5e9; text-decoration:none; } a:hover { text-decoration:underline; }
-  .container { max-width:760px; margin:0 auto; padding:20px 16px; }
-  .lead { color:#475569; }
-  pre { border:1px solid #e5e7eb; border-radius:12px; background:#fbfbfb; }
+  body {
+    font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin: 0;
+    color: #0f172a;
+    background: #fff;
+  }
+  .top {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 10;
+  }
+  a {
+    color: #0ea5e9;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+  .lead {
+    color: #475569;
+  }
+  pre {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fbfbfb;
+    overflow-x: auto;
+    padding: 1rem;
+  }
+  .blog-post img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
 </style>
 </head>
 <body>
@@ -21,19 +65,22 @@
     <div><a href="../projects/time-series-toolkit.html">← Back to Project</a></div>
     <nav><a href="../index.html#projects">Projects</a> · <a href="../index.html#cv">CV</a></nav>
   </header>
+
   <main class="container">
     <article class="blog-post">
-    <h1>On the Knife Edge: Committor Functions for Market Transitions</h1>
-    <p class="lead">Using committor analysis — a molecular simulation tool for locating transition states — to identify unstable regions in BTC price dynamics.</p>
+      <h1>On the Knife Edge: Committor Functions for Market Transitions</h1>
+      <p class="lead">Adapting committor analysis from molecular dynamics to identify unstable transition points in BTC price regimes.</p>
 
-    <h3>Committor Probability</h3>
-    <img src="../assets/img/blog/series-3-committor/p3_committor_prob.png" alt="Committor probability">
+      <h3>Committor Probability Profile</h3>
+      <img src="../assets/img/blog/series-3-committor/p3_committor_prob.png" alt="Committor probability">
 
-    <h3>Transition Regions</h3>
-    <img src="../assets/img/blog/series-3-committor/p3_transition_regions.png" alt="Transition regions">
+      <h3>Identified Transition Regions</h3>
+      <img src="../assets/img/blog/series-3-committor/p3_transition_regions.png" alt="Transition regions">
 
-    <p>Notebook & code: <a href="https://github.com/joewa6/portfolio/blob/main/notebooks/time_series_toolkit.py" target="_blank">GitHub</a></p>
-  </article>
-</main>
+      <p>Notebook & code: 
+        <a href="https://github.com/joewa6/portfolio/blob/main/notebooks/time_series_toolkit.py" target="_blank">GitHub</a>
+      </p>
+    </article>
+  </main>
 </body>
 </html>
