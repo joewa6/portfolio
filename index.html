@@ -46,6 +46,11 @@
     .divider{height:1px;background:var(--stroke);margin:22px 0}
     section{padding:28px 0;scroll-margin-top:calc(var(--topbar-h) + 20px)}
     h1,h2,h3{margin:0 0 10px}
+    
+    /* ===== Hero section contrast ===== */
+    .hero-title{font-size:2.5rem;font-weight:700;color:#111827}
+    .hero-tagline{font-size:1.25rem;color:#374151}
+    .hero{background:rgba(255,255,255,.95);padding:3rem 2rem;border-radius:16px;margin-bottom:1rem}
 
     /* ===== Top nav bar ===== */
     .topbar{
@@ -59,6 +64,8 @@
     .topnav a{color:#0f172a;padding:.4rem .6rem;border-radius:10px;border:1px solid transparent}
     .topnav a:hover{background:#fff;border-color:var(--stroke);text-decoration:none}
     .menu{display:flex;gap:10px;align-items:center}
+    nav .hire-btn{background:#6366f1;color:#fff;padding:.5rem 1rem;border-radius:10px;margin-left:1rem;font-weight:600;border:1px solid #6366f1}
+    nav .hire-btn:hover{background:#4f46e5;border-color:#4f46e5;text-decoration:none}
 
     /* ===== 2-column body (fixed-size left panel) ===== */
     .wrap{display:grid;grid-template-columns:var(--sidew) 1fr;gap:20px;max-width:calc(var(--maxw) + var(--sidew));margin:0 auto;padding:18px 16px}
@@ -83,18 +90,32 @@
     .grid.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
     @media (max-width: 1000px){.grid.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media (max-width: 680px){.wrap{grid-template-columns:1fr}.grid.cards{grid-template-columns:1fr}aside{display:none}}
+    
+    /* ===== CV section prominence ===== */
+    #cv .button-group{display:flex;gap:1rem;justify-content:left;margin-top:1rem;flex-wrap:wrap}
+    #cv .button-group a{background:#0ea5e9;color:#fff;padding:.75rem 1.5rem;border-radius:10px;font-weight:600;transition:transform .15s ease,background .15s ease;border:none}
+    #cv .button-group a:hover{transform:scale(1.05);background:#0284c7;text-decoration:none}
     .card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow)}
     .card .inner{padding:18px}
 
     .project{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
     @media (max-width: 900px){.project{grid-template-columns:1fr}}
     .box{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    
+    /* ===== Project cards spacing & hover ===== */
+    .card{transition:transform .15s ease,box-shadow .15s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.1)}
     .chiprow{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
 
     /* Blog */
     .post-card h3{margin:6px 0}
+    .post-card img{border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);object-fit:cover}
     .post-meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:.9rem}
     .tag-filter{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:14px}
+    
+    /* ===== Tag filters: Hover & Active Style ===== */
+    .tag-filter .btn{padding:.5rem .75rem;border-radius:10px;border:1px solid #cbd5e1;transition:background .2s,border-color .2s,transform .1s ease}
+    .tag-filter .btn:hover,.tag-filter .btn.active{background:#e0f2fe;border-color:#0ea5e9;color:#0284c7;cursor:pointer;text-decoration:none}
     .empty{color:var(--muted);padding:12px}
 
     /* Code blocks + copy button */
@@ -103,6 +124,23 @@
     .copy-btn:active{transform:translateY(1px)}
 
     footer{padding:24px 0;color:var(--muted);border-top:1px solid var(--stroke);margin-top:30px}
+    
+    /* ===== Two-tier blog structure ===== */
+    .section-lead{max-width:70ch}
+    .section-lead .muted{color:#64748b}
+    .series-block{margin-top:1.5rem;padding:1.25rem;border:1px solid rgba(15,23,42,.1);border-radius:16px}
+    .series-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+    .series-desc{max-width:80ch;color:#334155;margin-top:.25rem;line-height:1.5}
+    .series-primary{border-color:rgba(99,102,241,.35);background:rgba(99,102,241,.04)}
+    .series-secondary{background:rgba(2,6,23,.02);margin-top:2rem}
+    .series-cta{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+    .btn-primary{background:#6366f1;color:#fff;border:none}
+    .btn-primary:hover{background:#4f46e5;text-decoration:none}
+    .btn-ghost{border:1px solid rgba(15,23,42,.18);color:#0f172a;background:#fff}
+    .btn-ghost:hover{background:#f8fafc;text-decoration:none}
+    .archive .card-meta{color:#64748b;font-size:.9rem}
+    .card-link{color:var(--brand);font-weight:600;display:inline-block;margin-top:.5rem}
+    .card-link:hover{text-decoration:underline}
     /* --- Blog post image scaling --- */
     .blog-post img {
       max-width: 100%;
@@ -129,6 +167,7 @@
         <a href="#publications">Publications</a>
         <a href="#cv">CV</a>
         <a href="#contact">Contact</a>
+        <a href="#cv" class="hire-btn">Hire Me</a>
       </nav>
     </div>
   </header>
@@ -157,9 +196,9 @@
 
     <!-- Main content -->
     <main id="home">
-      <div class="container" style="padding-top:6px">
-        <h1>Computational pipelines for molecular and materials design</h1>
-        <p class="lead">Molecular modelling • Cheminformatics • Machine learning. I design end-to-end, reproducible workflows that turn data into decisions.</p>
+      <div class="container hero">
+        <h1 class="hero-title">Computational pipelines for molecular and materials design</h1>
+        <p class="hero-tagline">Molecular modelling • Cheminformatics • Machine learning. I design end-to-end, reproducible workflows that extract decisions from finite, noisy data.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 0">
           <a class="btn" href="#projects">View Projects</a>
           <a class="btn secondary" href="#cv">Download CV</a>
@@ -242,50 +281,103 @@ def featurise_smiles(smiles: str) -&gt; np.ndarray:
       <section id="blog">
         <div class="container">
           <h2>Blog</h2>
-          <p class="lead">Short, practical notes. Filter by tags.</p>
-          <div class="tag-filter">
-            <button class="btn secondary" data-tag="all">All</button>
-            <button class="btn secondary" data-tag="Signal">Signal</button>
-            <button class="btn secondary" data-tag="Viz">Viz</button>
-            <button class="btn secondary" data-tag="Equilibrium">Equilibrium</button>
-            <button class="btn secondary" data-tag="ML">ML</button>
+          <p class="lead section-lead">
+            Decision-relevant dynamical inference from finite trajectories.
+            <span class="muted">Methods-first. Domain-agnostic. No hype.</span>
+          </p>
+
+          <!-- PRIMARY SERIES -->
+          <div class="series-block series-primary">
+            <div class="series-head">
+              <div>
+                <h3 style="margin:0">DYNAMICS-10</h3>
+                <p class="series-desc">
+                  Ten-part audit of what can and cannot be inferred from finite, noisy trajectories when decisions depend on rates,
+                  stability, or transition timing. Molecules are the canonical laboratory; the logic generalises.
+                </p>
+              </div>
+              <div class="series-cta">
+                <a class="btn btn-primary" href="blog/dynamics-10/day00-scope-and-intent.md">Start here (Day 00)</a>
+              </div>
+            </div>
+
+            <div class="grid cards">
+              <article class="card">
+                <div class="inner">
+                  <h4 style="margin:0 0 .5rem">Day 00 — Scope, Boundaries, Intent</h4>
+                  <p class="card-meta" style="color:#64748b;font-size:.9rem;margin:.25rem 0">Series manifesto · decision quantities · exclusions</p>
+                  <p class="muted" style="margin:.5rem 0">Defines the invariant question, the acceptance filter, and what "decision-relevant" means in this blog.</p>
+                  <a class="card-link" href="blog/dynamics-10/day00-scope-and-intent.md">Read Day 00 →</a>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="inner">
+                  <h4 style="margin:0 0 .5rem">Day 01 — Distributions vs Transitions</h4>
+                  <p class="card-meta" style="color:#64748b;font-size:.9rem;margin:.25rem 0">Double well · MFPT · populations · failure modes</p>
+                  <p class="muted" style="margin:.5rem 0">Shows why matching equilibrium distributions does not imply correct transition dynamics.</p>
+                  <a class="card-link" href="blog/dynamics-10/day01-distributions-vs-dynamics.md">Read Day 01 →</a>
+                </div>
+              </article>
+            </div>
           </div>
 
-          <div id="posts" class="grid cards">
-            <!-- Post 1 -->
-            <article class="card post-card" data-tags="Signal Viz Equilibrium">
-              <div class="inner">
-                <img src="assets/img/blog/series-1-peaks/p1_raw_vs_smoothed.png" alt="BTC smoothing example" style="border-radius:12px;margin-bottom:10px">
-                <h3>Series 1.1 — Peaks, Troughs & Slopes</h3>
-                <div class="post-meta"><span>8 min</span><span class="tag">Signal</span><span class="tag">Viz</span></div>
-                <p class="muted">Detecting key turning points in BTC price data using slope, curvature, and smoothing techniques.</p>
-                <a class="btn secondary" href="blog/series1.1-peaks.html">Read</a>
+          <!-- SECONDARY / ARCHIVE -->
+          <div class="series-block series-secondary">
+            <div class="series-head">
+              <div>
+                <h3 style="margin:0">Technical Notes (Archive)</h3>
+                <p class="series-desc">
+                  Earlier exploratory posts. Useful, but not the canonical DYNAMICS-10 audit sequence.
+                </p>
               </div>
-            </article>
+            </div>
 
-            <!-- Post 2 -->
-            <article class="card post-card" data-tags="Signal Viz Equilibrium">
-              <div class="inner">
-                <img src="assets/img/blog/series-2-inefficiency/p2_neff_sliding.png" alt="Inefficiency metric plot" style="border-radius:12px;margin-bottom:10px">
-                <h3>Series 1.2 — Sliding Window Inefficiency</h3>
-                <div class="post-meta"><span>7 min</span><span class="tag">Signal</span><span class="tag">Equilibrium</span></div>
-                <p class="muted">Measuring market inefficiency over time using sliding Neff and autocorrelation analysis.</p>
-                <a class="btn secondary" href="blog/series1.2-inefficiency.html">Read</a>
-              </div>
-            </article>
+            <!-- Tag filters apply to archive only -->
+            <div class="tag-filter" style="margin-bottom:1rem">
+              <button class="btn secondary active" data-tag="all">All</button>
+              <button class="btn secondary" data-tag="Signal">Signal</button>
+              <button class="btn secondary" data-tag="Viz">Viz</button>
+              <button class="btn secondary" data-tag="Equilibrium">Equilibrium</button>
+              <button class="btn secondary" data-tag="ML">ML</button>
+            </div>
 
-            <!-- Post 3 -->
-            <article class="card post-card" data-tags="Signal Viz ML Equilibrium">
-              <div class="inner">
-                <img src="assets/img/blog/series-3-committor/p3_committor_prob.png" alt="Committor probability plot" style="border-radius:12px;margin-bottom:10px">
-                <h3>Series 1.3 — Committor Analysis</h3>
-                <div class="post-meta"><span>9 min</span><span class="tag">Signal</span><span class="tag">ML</span><span class="tag">Equilibrium</span></div>
-                <p class="muted">Adapting committor probability analysis from molecular simulations to market state transitions.</p>
-                <a class="btn secondary" href="blog/series1.3-commitor.html">Read</a>
-              </div>
-            </article>
+            <div id="posts" class="grid cards archive-cards">
+              <!-- Archive Post 1 -->
+              <article class="card archive post-card" data-tags="Signal Viz Equilibrium">
+                <div class="inner">
+                  <img src="assets/img/blog/series-1-peaks/p1_raw_vs_smoothed.png" alt="Peaks and slopes preview" loading="lazy" style="border-radius:12px;margin-bottom:10px">
+                  <h4 style="margin:0 0 .5rem">Peaks, Troughs & Slopes</h4>
+                  <p class="card-meta" style="color:#64748b;font-size:.9rem;margin:.25rem 0">Signal · Viz · pre-series note</p>
+                  <p class="muted" style="margin:.5rem 0">Smoothing scale changes detected turning points; treat peak detection as inference under finite data.</p>
+                  <a class="card-link" href="blog/series1.1-peaks.html">Read →</a>
+                </div>
+              </article>
+
+              <!-- Archive Post 2 -->
+              <article class="card archive post-card" data-tags="Signal Viz Equilibrium">
+                <div class="inner">
+                  <img src="assets/img/blog/series-2-inefficiency/p2_neff_sliding.png" alt="Inefficiency preview" loading="lazy" style="border-radius:12px;margin-bottom:10px">
+                  <h4 style="margin:0 0 .5rem">Sliding-Window Inefficiency</h4>
+                  <p class="card-meta" style="color:#64748b;font-size:.9rem;margin:.25rem 0">Signal · Equilibrium · pre-series note</p>
+                  <p class="muted" style="margin:.5rem 0">Autocorrelation collapses effective sample size; naive statistics overcount evidence.</p>
+                  <a class="card-link" href="blog/series1.2-inefficiency.html">Read →</a>
+                </div>
+              </article>
+
+              <!-- Archive Post 3 -->
+              <article class="card archive post-card" data-tags="Signal Viz ML Equilibrium">
+                <div class="inner">
+                  <img src="assets/img/blog/series-3-committor/p3_committor_prob.png" alt="Committor preview" loading="lazy" style="border-radius:12px;margin-bottom:10px">
+                  <h4 style="margin:0 0 .5rem">Committor Analysis</h4>
+                  <p class="card-meta" style="color:#64748b;font-size:.9rem;margin:.25rem 0">Equilibrium · ML · pre-series note</p>
+                  <p class="muted" style="margin:.5rem 0">Transition probabilities are more informative than coordinates for rare-event structure.</p>
+                  <a class="card-link" href="blog/series1.3-commitor.html">Read →</a>
+                </div>
+              </article>
+            </div>
+            <div id="emptyMsg" class="empty" style="display:none">No posts for that tag yet.</div>
           </div>
-          <div id="emptyMsg" class="empty" style="display:none">No posts for that tag yet.</div>
         </div>
       </section>
 
@@ -304,12 +396,12 @@ def featurise_smiles(smiles: str) -&gt; np.ndarray:
       <!-- CV -->
       <section id="cv">
         <div class="container">
-          <h2>CV</h2>
-          <p class="lead">Concise CV for roles in CADD, cheminformatics, formulation, and materials data science.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="assets/files/CV_Joe_Wallace.pdf" target="_blank" rel="noreferrer">Download PDF</a>
-            <a class="btn secondary" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="btn secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <h2>Curriculum Vitae</h2>
+          <p class="lead">Downloadable CV, GitHub, LinkedIn for direct recruiter access.</p>
+          <div class="button-group">
+            <a href="assets/files/CV_Joe_Wallace.pdf" target="_blank" rel="noreferrer">Download CV</a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/joewa6" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
       </section>
@@ -350,6 +442,11 @@ def featurise_smiles(smiles: str) -&gt; np.ndarray:
     const emptyMsg = document.getElementById('emptyMsg');
     btns.forEach(b=>{
       b.addEventListener('click', ()=>{
+        // Remove active class from all buttons
+        btns.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        b.classList.add('active');
+        
         const tag = b.dataset.tag;
         let any = 0;
         posts.forEach(p=>{
@@ -361,6 +458,9 @@ def featurise_smiles(smiles: str) -&gt; np.ndarray:
         emptyMsg.style.display = any ? 'none' : '';
       });
     });
+    
+    // Set 'All' as active by default
+    document.querySelector('.tag-filter .btn[data-tag="all"]')?.classList.add('active');
 
     // Copy button for code blocks
     window.copyCode = function(btn){

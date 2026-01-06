@@ -73,6 +73,20 @@
       <h1>Surfing the Spikes: Signal Processing for Crypto Peaks & Troughs</h1>
       <p class="lead">Applying Savitzky–Golay filtering and curvature analysis to detect meaningful turning points in noisy BTC price data.</p>
 
+      <div style="background:#f1f5f9;border-left:4px solid #6366f1;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:8px">
+        <h4 style="margin:0 0 0.5rem;color:#4338ca">What this post is actually about</h4>
+        <p style="margin:0;color:#475569">This analysis is not about markets. It is about what <em>can and cannot be inferred</em> from finite, noisy trajectories in any dynamical system—whether molecular simulations, sensor streams, or price data. The choice of BTC is a sandbox, not the subject.</p>
+      </div>
+
+      <h2>Baseline Discipline</h2>
+      <p>Before applying any sophisticated method, we establish three reference levels:</p>
+      <ul>
+        <li><strong>Naive baseline:</strong> raw signal extrema (no smoothing)</li>
+        <li><strong>Engineered baseline:</strong> fixed Savitzky–Golay window</li>
+        <li><strong>Inferred structure:</strong> scale-robust extrema detection</li>
+      </ul>
+      <p>This hierarchy lets us distinguish true signal from noise artifacts and understand what we're actually improving upon.</p>
+
       <h3>Raw vs Smoothed</h3>
       <img src="../assets/img/blog/series-1-peaks/p1_raw_vs_smoothed.png" alt="Raw vs Smoothed" loading="lazy">
 
@@ -84,6 +98,12 @@
 
       <h3>Detected Peaks & Troughs</h3>
       <img src="../assets/img/blog/series-1-peaks/p1_peaks_troughs.png" alt="Peaks & Troughs">
+
+      <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:8px">
+        <h4 style="margin:0 0 0.5rem;color:#92400e">Decision Quantity</h4>
+        <p style="margin:0 0 0.75rem;color:#78350f"><strong>Given a finite trajectory, how stable is the timing and ordering of detected transitions under perturbations of the smoothing scale?</strong></p>
+        <p style="margin:0;color:#78350f;font-size:0.95rem">Failure mode: False peaks appear/disappear with small window changes (non-robust). Robustness region: Peaks persist across a window range (scale-invariant extrema). For sufficiently short trajectories, peak detection becomes non-identifiable regardless of smoothing; this is a data limit, not a modelling failure.</p>
+      </div>
 
       <p>Notebook & code: 
         <a href="https://github.com/joewa6/portfolio/blob/main/notebooks/time_series_toolkit.py" target="_blank">GitHub</a>
