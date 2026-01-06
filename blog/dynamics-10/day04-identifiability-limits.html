@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Identifiability Limits</title>
+
+  <!-- Reuse existing site styling from index.html -->
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --stroke: #e5e7eb;
+      --card: #ffffff;
+      --panel: #f8fafc;
+      --brand: #0ea5e9;
+      --brand-2: #6366f1;
+      --accent: #10b981;
+      --shadow: 0 10px 24px rgba(2,6,23,.07);
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+    img{max-width:100%;display:block;margin:1rem auto;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .muted{color:var(--muted)}
+    
+    /* Post-specific styling */
+    header{max-width:920px;margin:24px auto 0;padding:0 16px;border-bottom:1px solid var(--stroke);padding-bottom:12px}
+    main{max-width:920px;margin:24px auto;padding:0 16px}
+    article{line-height:1.7}
+    article h1{font-size:2rem;font-weight:700;margin:0 0 .5rem;color:#111827}
+    article h2{margin:2rem 0 1rem;font-size:1.5rem;font-weight:600;color:#1e293b}
+    article h3{margin:1.5rem 0 .75rem;font-size:1.25rem;font-weight:600;color:#334155}
+    article h4{margin:1rem 0 .5rem;font-size:1.1rem;font-weight:600;color:#475569}
+    article ul, article ol{margin:1rem 0;padding-left:1.5rem}
+    article li{margin:.5rem 0}
+    article p{margin:1rem 0}
+    article hr{border:none;border-top:1px solid var(--stroke);margin:2rem 0}
+    
+    /* Code blocks */
+    pre{overflow-x:auto;padding:1rem;border-radius:12px;background:#f8fafc;border:1px solid var(--stroke);margin:1rem 0}
+    code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:.9em}
+    pre code{background:none;padding:0;border-radius:0}
+    p code, li code{background:#f1f5f9;padding:.15rem .4rem;border-radius:4px;color:#e11d48}
+    
+    /* Highlighted boxes (framing blocks, decision quantities) */
+    .highlight-box{padding:1rem 1.25rem;margin:1.5rem 0;border-radius:8px;border-left:4px solid}
+    .highlight-box h4{margin:0 0 .5rem}
+    .highlight-box p{margin:.5rem 0}
+    .highlight-box p:last-child{margin-bottom:0}
+    
+    /* Tables */
+    table{border-collapse:collapse;width:100%;margin:1rem 0}
+    th,td{border:1px solid var(--stroke);padding:.5rem .75rem;text-align:left}
+    th{background:var(--panel);font-weight:600}
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="../../index.html#blog">← Back to Blog</a>
+  </header>
+
+  <main>
+    
+  <article>
+    <h1>Identifiability Limits</h1>
+
+    
+      <p style="color:#64748b; margin-top: -8px; font-size: 0.95rem;">
+        Day 04
+      </p>
+    
+
+    <div class="post-content">
+      <h2 id="what-this-post-is-actually-about">What this post is actually about<a class="headerlink" href="#what-this-post-is-actually-about" title="Permanent link">&para;</a></h2>
+<p>This post is not about the specific domain used as an example.
+It is about what can and cannot be inferred from finite trajectories
+of a noisy dynamical system when decisions depend on that inference.</p>
+<p>State explicitly what is <em>not</em> the point of the post.</p>
+<hr>
+<h2 id="the-question">The Question<a class="headerlink" href="#the-question" title="Permanent link">&para;</a></h2>
+<p>Clearly state the question being tested.</p>
+<p>Avoid motivation.
+Avoid history.
+Avoid promises.</p>
+<p>If the question cannot be answered falsifiably, stop.</p>
+<hr>
+<h2 id="the-system">The System<a class="headerlink" href="#the-system" title="Permanent link">&para;</a></h2>
+<p>Describe the system only insofar as it constrains inference.</p>
+<p>Explain why this system is sufficient to expose the issue.
+Do not add realism unless it is required.</p>
+<hr>
+<h2 id="models-representations-compared">Models / Representations Compared<a class="headerlink" href="#models-representations-compared" title="Permanent link">&para;</a></h2>
+<p>Enumerate the models, representations, or assumptions being compared.</p>
+<p>For each:
+- what information it uses
+- what it ignores</p>
+<p>No evaluation yet.</p>
+<hr>
+<h2 id="what-works-baseline-competence">What Works (Baseline Competence)<a class="headerlink" href="#what-works-baseline-competence" title="Permanent link">&para;</a></h2>
+<p>Show what all approaches get right.</p>
+<p>This section builds trust.
+Do not skip it.</p>
+<hr>
+<h2 id="where-it-fails">Where It Fails<a class="headerlink" href="#where-it-fails" title="Permanent link">&para;</a></h2>
+<p>Demonstrate divergence in at least one decision-relevant quantity.</p>
+<p>Be concrete.
+Use figures sparingly.</p>
+<hr>
+<h2 id="failure-mode-analysis">Failure Mode Analysis<a class="headerlink" href="#failure-mode-analysis" title="Permanent link">&para;</a></h2>
+<p>Explain <em>why</em> the failure occurs.</p>
+<p>State clearly whether this is:
+- a modelling limitation
+- a data limitation
+- an identifiability limit</p>
+<p>If you cannot explain the failure, do not publish.</p>
+<hr>
+<h2 id="decision-consequences">Decision Consequences<a class="headerlink" href="#decision-consequences" title="Permanent link">&para;</a></h2>
+<p>Translate the failure into a real decision error.</p>
+<p>Examples:
+- incorrect ranking
+- unstable rates
+- false confidence
+- wasted sampling</p>
+<p>This is the point of the post.</p>
+<hr>
+<h2 id="reusable-rule">Reusable Rule<a class="headerlink" href="#reusable-rule" title="Permanent link">&para;</a></h2>
+<p>State one rule that generalises beyond this system.</p>
+<p>One paragraph.
+No hedging.</p>
+<hr>
+<h2 id="bridge-to-the-next-question">Bridge to the Next Question<a class="headerlink" href="#bridge-to-the-next-question" title="Permanent link">&para;</a></h2>
+<p>Explain what remains unresolved and why the next post exists.</p>
+<p>Do not tease.
+Do not hype.
+Just constrain.</p>
+<hr>
+    </div>
+  </article>
+
+  </main>
+</body>
+</html>
